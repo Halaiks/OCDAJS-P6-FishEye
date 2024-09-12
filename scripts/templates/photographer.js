@@ -1,7 +1,15 @@
 function photographerTemplate(data) {
-    const { name, portrait } = data;
+    const { name, portrait, city, country, tagline, price } = data;
+
+    console.log("Data reçue:", data); // Log des données initiales
 
     const picture = `assets/photographers/${portrait}`;
+    
+
+    // Log des variables extraites
+    console.log("Nom:", name);
+    console.log("Portrait:", portrait);
+    console.log("Chemin de l'image:", picture);
 
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
@@ -9,8 +17,17 @@ function photographerTemplate(data) {
         img.setAttribute("src", picture)
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
+        const location = document.createElement('p');
+        location.textContent = `${city}, ${country}`;
+        const taglineElement = document.createElement('p');
+        taglineElement.textContent = tagline;
+        const priceElement = document.createElement('p');
+        priceElement.textContent = `${price}€/jour`;
         article.appendChild(img);
         article.appendChild(h2);
+        article.appendChild(location);
+        article.appendChild(taglineElement);
+        article.appendChild(priceElement);
         return (article);
     }
     return { name, picture, getUserCardDOM }
