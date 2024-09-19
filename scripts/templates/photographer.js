@@ -19,10 +19,12 @@ function photographerTemplate(data) {
         h2.textContent = name;
         const location = document.createElement('p');
         location.textContent = `${city}, ${country}`;
+        location.classList.add('location');
         const taglineElement = document.createElement('p');
         taglineElement.textContent = tagline;
         const priceElement = document.createElement('p');
         priceElement.textContent = `${price}€/jour`;
+        priceElement.classList.add('price');
         article.appendChild(img);
         article.appendChild(h2);
         article.appendChild(location);
