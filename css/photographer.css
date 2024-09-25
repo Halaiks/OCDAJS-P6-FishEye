@@ -3,9 +3,20 @@
 }
 
 .photograph-header {
-    background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    background-color: #FAFAFA;
+}
+
+.photograph-portrait img {
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    object-fit: cover;
 }
 
 .contact_button {
