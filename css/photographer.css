@@ -12,11 +12,30 @@
     background-color: #FAFAFA;
 }
 
-.photograph-portrait img {
+.photograph-header img {
     width: 200px;
     height: 200px;
     border-radius: 100px;
     object-fit: cover;
+}
+
+.photograph-info h2 {
+    font-size: 64px;
+    font-weight: 400;
+    color: #D3573C;
+    margin: 0;
+}
+
+.location {
+    font-size: 24px;
+    color: #901C1C;
+    margin-bottom: 5px;
+}
+
+.tagline {
+    font-size: 18px;
+    color: #525252;
+    margin-top: 20px;
 }
 
 .contact_button {
