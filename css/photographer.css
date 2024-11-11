@@ -45,12 +45,19 @@
   
 
 .photograph-header {
-    height: 300px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 50px;
-    background-color: #FAFAFA;
+    width: 100%;
+    padding: 40px;
+    margin-top: 20px;
+    background-color: var(--color-light-medium);
+}
+
+.photographer_profile__infos{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .photograph-header img {
@@ -134,12 +141,25 @@ form textarea {
 /* Conteneur principal des médias */
 .media-section {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    width: 100%;
-    margin: 40px auto;
-    gap: 20px 95px; /* Espacement entre les cartes */
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 40px;
 }
+
+.gallery{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px 60px;
+}
+
+.gallery_card{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
 
 /* Chaque carte de média */
 .media-item {
@@ -224,3 +244,195 @@ form textarea {
     font-size: 24px;
 }
 
+.main_about{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 40px;
+    margin-top: 20px;
+    background-color: var(--color-light-medium);
+}
+
+
+.photographer_profile__infos{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.photographer_thumbnail{
+    height: clamp(10rem, 20vw, 20rem);
+    width: clamp(10rem, 20vw, 20rem);
+}
+
+
+/* MEDIA GALLERY */
+.main_content{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.gallery{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px 60px;
+}
+
+.gallery_card{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.gallery_card a{
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.gallery_card a figure{
+    height: 260px;
+}
+
+
+.gallery_thumbnail{
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.gallery_card figcaption{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.gallery_card figcaption h2{
+    font-weight: 100;
+    color: var(--color-primary);
+    font-size: 24px;
+}
+
+.gallery_card figcaption div{ 
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: black;
+    font-size: 16px;
+}
+
+.btn_like{
+    border-radius: 5px;
+    padding: 0 1px;
+    font-size: 24px;
+    color: var(--color-secondary);
+}
+
+.liked{
+    color: var(--color-primary);
+}
+
+/* MODAL FORM */
+.modal_form {
+    position: relative;
+    border-radius: 5px;
+    background-color: var(--color-secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    opacity: 0;
+    transform: translateY(-150px);
+    animation: fadeIn .3s ease-in-out forwards;
+}
+
+.modal_form_title{
+    width: 100%;
+    font-size: clamp(2rem, 3vw, 4rem);
+}
+
+.modal_form_title h2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: normal;
+    font-size: clamp(2rem, 3vw, 4rem);
+}
+
+.btn_close:hover::before{
+    color: var(--color-primary);
+}
+.btn_close:focus:not(:hover)::before{
+    outline: 2px solid var(--color-primary);
+}
+
+.btn_close::before{
+    content: "\f00d";
+    font-family: "Font Awesome 5 Free";
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: 900;
+    color: var(--color-light);
+    font-size: clamp(2rem, 3vw, 3rem);
+}
+
+.modal_form form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.form_content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form_content label {
+    color: var(--color-label);
+    font-size: clamp(1.8rem, 2vw, 2rem);
+}
+
+.form_content input {
+    height: 50px;
+    padding-left: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.form_content textarea {
+    border-radius: 5px;
+    height: 150px;
+    resize: none;
+    padding: 10px;
+}
+
+.form_content span{
+    color: var(--color-dark);
+    font-size: clamp(1.2rem, 1.6vw, 1.6rem);
+}
+
+.form_content input:invalid:focus,
+.form_content textarea:invalid:focus {
+    outline: 2px solid var(--color-primary);
+} 
+
+.btn_submit{
+    max-width: 150px;
+}
+
+.btn_submit:hover,
+.btn_submit:focus {
+    outline: 2px solid var(--color-light);
+}
