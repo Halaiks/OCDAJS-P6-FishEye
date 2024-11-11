@@ -1,42 +1,36 @@
-async function getPhotographers() {
-    console.log("getPhotographers: Début de la fonction"); // Appel fonction
-    // Utiliser fetch pour récupérer le fichier JSON
-    try {
-        const response = await fetch('data/photographers.json');
-        const data = await response.json();
-        const photographers = data.photographers; // Extraire les photographes du fichier JSON
 
-        console.log("getPhotographers: photographers récupérés", photographers); // Affiche les photographes récupérés
-        return { photographers };
-    } catch (error) {
-        console.error("Erreur lors de la récupération des photographes :", error);
-        return { photographers: [] }; // Retourne un tableau vide en cas d'erreur
-    }
+// IMPORTS
+// Classe Api pour récupérer les données des photographes
+import Api from "../api/Api.js";
+// Classe Photographer pour modéliser les données de chaque photographe
+import Photographer from "../models/Photographer.js";
+// Classe PhotographerCard pour générer le template HTML des photographes
+import PhotographerCard from "../templates/index.js";
 
-    console.log("getPhotographers: photographers récupérés", photographers); // Affiche les photographes récupérés
-    // et bien retourner le tableau photographers seulement une fois récupéré
-}
+// Sélection de la section du DOM où les cartes des photographes seront ajoutées
+const photographersSection = document.querySelector(".photographer_section");
 
-async function displayData(photographers) {
-    console.log("displayData: Photographers reçus", photographers); // Vérifie que les photographes sont passés à la fonction
-    const photographersSection = document.querySelector(".photographer_section");
-    console.log("displayData: photographersSection trouvé", photographersSection); // Vérifie si la section est bien trouvée
+// Création d'une instance de l'API pour obtenir les données depuis le fichier JSON
+const photographersApi = new Api("data/photographers.json");
 
-    photographers.forEach((photographer) => {
-        const photographerModel = photographerTemplate(photographer);
-        const userCardDOM = photographerModel.getUserCardDOM();
-        console.log("displayData: Ajout d'un photographe à la section", photographer); // Affiche chaque photographe ajouté
-        photographersSection.appendChild(userCardDOM);
-    });
-}
+// Fonction asynchrone pour afficher les photographes
+const displayPhotographers = async () => {
 
-async function init() {
-    console.log("init: Début de l'initialisation"); // Verif initialisation
-    // Récupère les datas des photographes
-    const { photographers } = await getPhotographers();
-    console.log("init: Photographers récupérés", photographers); // Vérif si les photographes sont bien récupérés
-    displayData(photographers);
-}
+    // Récupération des données de l'API
+    const photographersData = await photographersApi.get();
+    
+    // Accès à la liste des photographes depuis les données récupérées
+    const photographers = photographersData.photographers;
 
-init();
+    // Transformation des données des photographes en instances de Photographer, 
+    // puis génération de chaque carte de photographe et ajout à la section du DOM
+    photographers
+        .map(photographer => new Photographer(photographer)) 
+        .forEach(photographer => { 
+            const template = new PhotographerCard(photographer); 
+            const photographerCard = template.createPhotographerCard(); 
+            photographersSection.appendChild(photographerCard);
+        });
+};
 
+displayPhotographers();
