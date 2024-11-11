@@ -1,6 +1,48 @@
+/* Modale */
 #contact_modal {
     display: none;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 100; 
 }
+
+.modal {
+    background-color: #DB8876;
+    width: 50%;
+    max-width: 670px; 
+    height: 80vh; 
+    padding: 35px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; 
+    box-shadow: -5px 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+.modal header {
+    justify-content: space-between;
+    width: 100%;
+}
+
+.modal header img {
+    cursor: pointer;
+}
+
+.modal header h2 {
+    font-size: 64px;
+    font-weight: normal;
+    text-align: center;
+}
+
+  
 
 .photograph-header {
     display: flex;
@@ -58,32 +100,7 @@
     cursor: pointer;
 }
 
-.modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 35px;
-    margin: auto;
-}
 
-.modal header {
-    justify-content: space-between;
-    width: 100%;
-}
-
-.modal header img {
-    cursor: pointer;
-}
-
-.modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
-}
 
 form {
     display: flex;
@@ -108,6 +125,13 @@ form div {
 form input {
     width: 100%;
     height: 68px;
+    border: none;
+    border-radius: 5px;
+}
+
+form textarea {
+    width: 100%;
+    height: 170px;
     border: none;
     border-radius: 5px;
 }
