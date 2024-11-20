@@ -352,7 +352,6 @@ form textarea {
     width: 90%;
     max-width: 600px;
     opacity: 0;
-    transform: translateY(-150px);
     animation: fadeIn .3s ease-in-out forwards;
 }
 
@@ -366,7 +365,7 @@ form textarea {
     justify-content: space-between;
     align-items: center;
     font-weight: normal;
-    font-size: clamp(2rem, 3vw, 4rem);
+    font-size: 64px;
 }
 
 .btn_close:hover::before{
