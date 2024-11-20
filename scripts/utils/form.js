@@ -34,18 +34,17 @@ export const validateForm = () => {
         };
     });
 
-    const checkInputValidity = (input, regex) => {
+    const checkInputValidity = (input, isValid) => {
         const errorMessage = input.dataset.error;
         const messageProvider = input.nextElementSibling;
-        const isValid = regex.test(input.value);
 
-        if(isValid) {
+        if (isValid) {
             messageProvider.innerHTML = "";
             messageProvider.removeAttribute("role");
             input.removeAttribute("aria-invalid");
         } else {
             messageProvider.innerHTML = errorMessage;
-            messageProvider.setAttribute("role", "alert")
+            messageProvider.setAttribute("role", "alert");
             input.setAttribute("aria-invalid", "true");
         }
 
@@ -54,13 +53,14 @@ export const validateForm = () => {
     };
 
     const displayCustomMessage = () => {
-        const regexName = /^([A-Za-z|\s]{3,15})?([-]{0,1})?([A-Za-z|\s]{3,15})$/;
+        const isFirstNameValid = firstName.value.trim().length >= 3 && firstName.value.trim().length <= 15;
+        const isLastNameValid = lastName.value.trim().length >= 3 && lastName.value.trim().length <= 15;
         const regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-        const regexMessage = /^[A-Za-z0-9|\s]{20,200}$/;
+        const regexMessage = /^[A-Za-z0-9|\s]{5,200}$/;
 
-        checkInputValidity(firstName, regexName);
-        checkInputValidity(lastName, regexName);
-        checkInputValidity(email, regexEmail);
-        checkInputValidity(message, regexMessage);
+        checkInputValidity(firstName, isFirstNameValid);
+        checkInputValidity(lastName, isLastNameValid);
+        checkInputValidity(email, regexEmail.test(email.value));
+        checkInputValidity(message, regexMessage.test(message.value));
     };
 };
