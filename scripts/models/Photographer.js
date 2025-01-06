@@ -1,4 +1,3 @@
-// Exportation par défaut de la classe Photographer pour une utilisation externe
 export default class Photographer {
 
     // Constructeur de la classe Photographer qui initialise les propriétés du photographe avec les données fournies

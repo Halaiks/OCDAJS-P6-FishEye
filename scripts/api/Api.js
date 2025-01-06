@@ -1,4 +1,3 @@
-// Exportation par défaut de la classe Api pour pouvoir l'importer facilement ailleurs
 export default class Api {
 
     // Constructeur de la classe Api qui initialise l'URL pour les requêtes API

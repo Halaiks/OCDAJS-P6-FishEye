@@ -1,10 +1,5 @@
-
-// IMPORTS
-// Classe Api pour récupérer les données des photographes
 import Api from "../api/Api.js";
-// Classe Photographer pour modéliser les données de chaque photographe
 import Photographer from "../models/Photographer.js";
-// Classe PhotographerCard pour générer le template HTML des photographes
 import PhotographerCard from "../templates/index.js";
 
 // Sélection de la section du DOM où les cartes des photographes seront ajoutées
