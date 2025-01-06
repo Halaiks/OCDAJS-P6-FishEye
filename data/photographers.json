@@ -63,7 +63,8 @@
 			"image": "Fashion_Yellow_Beach.jpg",
 			"likes": 62,
 			"date": "2011-12-08",
-			"price": 55
+			"price": 55,
+			"alt": "test"
 		},
 		{
 			"id": 8520927,
