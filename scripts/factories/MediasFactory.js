@@ -1,4 +1,3 @@
-// Importation des classes Image et Video pour gérer différents types de médias
 import Image from '../models/Image.js';
 import Video from '../models/Video.js';
 
