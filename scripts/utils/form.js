@@ -3,12 +3,12 @@ export const openCloseFormContact = () => {
     const contactBtn = document.querySelector(".contact_button");
     const contactModal = document.querySelector(".modal_wrapper");
     const closeModal = document.querySelector(".btn_close");
-    // Ajout d'un événement click sur le bouton de contact pour ouvrir le formulaire
+    
     contactBtn.addEventListener("click", () => {
         contactModal.style.display = "flex";
         closeModal.focus();
     });
-    // Ajout d'un événement click sur le bouton de fermeture pour fermer le formulaire
+
     closeModal.addEventListener("click", () => contactModal.style.display = "none");
 };
 
@@ -20,14 +20,17 @@ export const validateForm = () => {
     const email = document.querySelector("#email");
     const message = document.querySelector("#message");
 
-    // Ajout d'un événement input sur le formulaire pour afficher les messages d'erreur personnalisés
-    form.addEventListener('input', () => displayCustomMessage());
+    // Ajout de l'événement blur sur chaque champ pour afficher les erreurs uniquement après que l'utilisateur quitte le champ
+    [firstName, lastName, email, message].forEach(input => {
+        input.addEventListener('blur', () => checkInputValidity(input));
+    });
 
-    // Ajout d'un événement submit sur le formulaire pour valider les données et les envoyer
+    // Ajout de l'événement submit pour la validation finale
     form.addEventListener('submit', e => {
         e.preventDefault();
-        if (!form.checkValidity()) displayCustomMessage();
-        else {
+        if (!form.checkValidity()) {
+            displayCustomMessage();
+        } else {
             const formDatas = {
                 firstName: firstName.value,
                 lastName: lastName.value,
@@ -37,13 +40,27 @@ export const validateForm = () => {
             console.log(JSON.stringify(formDatas));
             document.querySelectorAll('.formField').forEach(input => input.classList.remove('valid'));
             form.reset();
-        };
+        }
     });
 
-    // Fonction pour vérifier la validité d'un champ d'entrée et afficher le message d'erreur correspondant
-    const checkInputValidity = (input, isValid) => {
+    // Fonction pour vérifier la validité d'un champ et afficher le message d'erreur correspondant
+    const checkInputValidity = (input) => {
         const errorMessage = input.dataset.error;
         const messageProvider = input.nextElementSibling;
+        let isValid = false;
+
+        switch (input.id) {
+            case 'firstname':
+            case 'lastname':
+                isValid = input.value.trim().length >= 3 && input.value.trim().length <= 15;
+                break;
+            case 'email':
+                isValid = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(input.value);
+                break;
+            case 'message':
+                isValid = /^[A-Za-z0-9|\s]{5,200}$/.test(input.value);
+                break;
+        }
 
         if (isValid) {
             messageProvider.innerHTML = "";
@@ -59,16 +76,11 @@ export const validateForm = () => {
         input.classList.toggle('valid', isValid);
     };
 
-    // Fonction pour afficher les messages d'erreur personnalisés
+    // Fonction pour afficher les messages d'erreur personnalisés sur tous les champs
     const displayCustomMessage = () => {
-        const isFirstNameValid = firstName.value.trim().length >= 3 && firstName.value.trim().length <= 15;
-        const isLastNameValid = lastName.value.trim().length >= 3 && lastName.value.trim().length <= 15;
-        const regexEmail = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
-        const regexMessage = /^[A-Za-z0-9|\s]{5,200}$/;
-
-        checkInputValidity(firstName, isFirstNameValid);
-        checkInputValidity(lastName, isLastNameValid);
-        checkInputValidity(email, regexEmail.test(email.value));
-        checkInputValidity(message, regexMessage.test(message.value));
+        checkInputValidity(firstName);
+        checkInputValidity(lastName);
+        checkInputValidity(email);
+        checkInputValidity(message);
     };
 };
