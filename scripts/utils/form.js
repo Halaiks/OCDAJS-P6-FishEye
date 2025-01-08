@@ -1,14 +1,18 @@
+// Fonction pour ouvrir et fermer le formulaire de contact
 export const openCloseFormContact = () => {
     const contactBtn = document.querySelector(".contact_button");
     const contactModal = document.querySelector(".modal_wrapper");
     const closeModal = document.querySelector(".btn_close");
+    // Ajout d'un événement click sur le bouton de contact pour ouvrir le formulaire
     contactBtn.addEventListener("click", () => {
         contactModal.style.display = "flex";
         closeModal.focus();
     });
+    // Ajout d'un événement click sur le bouton de fermeture pour fermer le formulaire
     closeModal.addEventListener("click", () => contactModal.style.display = "none");
 };
 
+// Fonction pour valider le formulaire
 export const validateForm = () => {
     const form = document.querySelector('.modal_form form');
     const firstName = document.querySelector("#firstname");
@@ -16,8 +20,10 @@ export const validateForm = () => {
     const email = document.querySelector("#email");
     const message = document.querySelector("#message");
 
+    // Ajout d'un événement input sur le formulaire pour afficher les messages d'erreur personnalisés
     form.addEventListener('input', () => displayCustomMessage());
 
+    // Ajout d'un événement submit sur le formulaire pour valider les données et les envoyer
     form.addEventListener('submit', e => {
         e.preventDefault();
         if (!form.checkValidity()) displayCustomMessage();
@@ -34,6 +40,7 @@ export const validateForm = () => {
         };
     });
 
+    // Fonction pour vérifier la validité d'un champ d'entrée et afficher le message d'erreur correspondant
     const checkInputValidity = (input, isValid) => {
         const errorMessage = input.dataset.error;
         const messageProvider = input.nextElementSibling;
@@ -52,6 +59,7 @@ export const validateForm = () => {
         input.classList.toggle('valid', isValid);
     };
 
+    // Fonction pour afficher les messages d'erreur personnalisés
     const displayCustomMessage = () => {
         const isFirstNameValid = firstName.value.trim().length >= 3 && firstName.value.trim().length <= 15;
         const isLastNameValid = lastName.value.trim().length >= 3 && lastName.value.trim().length <= 15;

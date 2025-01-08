@@ -1,4 +1,3 @@
-// Exportation par défaut de la classe PhotographerCard pour créer la carte d'un photographe
 export default class PhotographerCard {
 
     // Constructeur qui prend en argument un objet photographe
