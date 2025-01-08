@@ -55,7 +55,7 @@ export const validateForm = () => {
     const displayCustomMessage = () => {
         const isFirstNameValid = firstName.value.trim().length >= 3 && firstName.value.trim().length <= 15;
         const isLastNameValid = lastName.value.trim().length >= 3 && lastName.value.trim().length <= 15;
-        const regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+        const regexEmail = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
         const regexMessage = /^[A-Za-z0-9|\s]{5,200}$/;
 
         checkInputValidity(firstName, isFirstNameValid);
