@@ -1,11 +1,11 @@
 {
   "name": "ocdajs-p6-fisheye",
   "version": "1.0.0",
-  "description": "## Démarrer le projet",
+  "description": "## D\u00e9marrer le projet",
   "main": "index.js",
   "scripts": {
-      "dev": "http-server",
-  "lint": "eslint scripts/**/*.js"
+    "dev": "node api.js && http-server",
+    "lint": "eslint scripts/**/*.js"
   },
   "keywords": [],
   "author": "",
