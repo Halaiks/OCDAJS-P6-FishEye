@@ -11,3 +11,4 @@ export default class Photographer {
         this.portrait = data.portrait;
     }
 }
+ 
