@@ -17,8 +17,8 @@ export default class PhotographerMedias {
                 ${this.medias.map(media => {
             // Chaque média peut être une image ou une vidéo, donc on crée le contenu HTML en conséquence
             const mediaContent = media.image
-                ? ` <img class="gallery_thumbnail" src="assets/photographers-medias/${this.photographer.name}/${media.image}" alt="${media.alt}">`
-                : ` <video class="gallery_thumbnail" aria-label="${media.alt}">
+                ? ` <img class="gallery_thumbnail" src="assets/photographers-medias/${this.photographer.name}/${media.image}" alt="${media.title}">`
+                : ` <video class="gallery_thumbnail" aria-label="${media.title}">
                         <source src="assets/photographers-medias/${this.photographer.name}/${media.video}" type="video/mp4">
                     </video>`;
             // Renvoie le contenu HTML pour chaque média
